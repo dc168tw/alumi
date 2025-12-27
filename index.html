@@ -163,11 +163,72 @@ option {
     } */
 
 
-        @media (max-width: 768px) {
-            body {
-                font-size: 12px;
-            }
-        }
+@media (max-width: 600px) {
+    /* 1. 隱藏金額欄位 */
+    #orderTable th:nth-child(5), 
+    #orderTable td:nth-child(5) {
+        display: none !important;
+    }
+
+    /* 2. 欄位比例極致分配：將所有空間推給「型號」 */
+    #orderTable th:nth-child(1) { width: 5%; }   /* 序號 */
+    #orderTable th:nth-child(2) { width: 70%; }  /* 型號 - 最大化 */
+    #orderTable th:nth-child(3) { width: 15%; }  /* 長度 */
+    #orderTable th:nth-child(4) { width: 10%; }  /* 數量 */
+    
+    /* 3. 編輯欄位：關鍵壓縮技術 */
+    #orderTable th:nth-child(6),
+    #orderTable td:last-child {
+        width: 0.1% !important;      /* 強制壓縮到最小寬度 */
+        padding: 2px 0 !important;   /* 徹底移除左右內距 */
+        margin: 0 !important;
+        white-space: nowrap !important;
+        display: table-cell !important; /* 覆蓋掉原本的 flex 佈局 */
+        font-size: 0 !important;     /* 移除 HTML 空白字元 */
+        text-align: right;           /* 讓按鈕靠右對齊 */
+    }
+
+
+
+    /* 4. 精簡窄長型按鈕 (邊框樣式) */
+    .copyBtn, .deleteBtn, .moveUpBtn, .moveDownBtn {
+        display: inline-block !important;
+        background-color: transparent !important;
+        padding: 0 !important;
+        margin: 0 !important;        /* 移除按鈕間距 */
+        min-width: 18px !important;  /* 寬度 */
+        height: 24px !important;     /* 稍微拉高，方便手指點擊 */
+        font-size: 11px !important;
+        border: 1px solid #ccc !important;
+        border-radius: 0px !important;
+        box-sizing: border-box;
+        vertical-align: middle;
+    }
+
+    /* 5.邊框顏色強化：綠加、紅減、灰移動 */
+    .copyBtn { color: #4CAF50 !important; border-color: #4CAF50 !important; }
+    .deleteBtn { color: #ff4d4d !important; border-color: #ff4d4d !important; border-left: none !important; }
+    .moveUpBtn { color: #888 !important; border-color: #ddd !important; border-left: none !important; }
+    .moveDownBtn { color: #888 !important; border-color: #ddd !important; border-left: none !important; }
+
+
+/* 6.針對長度與數量輸入框內的文字大小調整 */
+    .length, .quantity {
+        font-size: 15px !important;  /* 在這裡修改數字，例如 18px 或 1.2em */
+        width: 100% !important;
+        min-width: 0 !important;      /* 確保能維持縮小的寬度 */
+        padding: 4px 0 !important;
+        text-align: center;
+        box-sizing: border-box;
+    }
+
+    /* 7. 型號下拉選單字體與寬度調整 */
+    .model {
+        font-size: 15px !important;
+        padding: 2px 0 !important;
+        width: 100% !important;
+    }
+}
 
     </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.9/xlsx.full.min.js"></script>
